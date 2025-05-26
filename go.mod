@@ -12,7 +12,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.52.4
 	github.com/joho/godotenv v1.5.1
 	github.com/redis/go-redis/v9 v9.8.0
-	github.com/rs/zerolog v1.33.0
+	github.com/rs/zerolog v1.34.0
 	github.com/stretchr/testify v1.9.0
 	github.com/swaggo/swag v1.16.3
 	golang.org/x/crypto v0.38.0
