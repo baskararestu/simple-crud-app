@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "simple-crud/pb/user";
+import "google/protobuf/empty.proto";
+
+service UserService {
+ rpc CreateUser(CreateUserRequest) returns (CommonResponse); 
+ rpc GetUser (google.protobuf.Empty) returns (UserListResponse);  
+ rpc UpdateUser (UpdateUserRequest) returns (CommonResponse);
+ rpc DeleteUser (DeleteUserRequest) returns (CommonResponse);
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string password =3   ;
+}
+
+message CommonResponse {
+    bool status = 1;
+    string message = 2;
+}
+
+message UserData {
+    string role_id = 1;
+    string role_name = 2;
+    string name = 3;
+    string email = 4;
+    string last_access = 5; // format 2023-11-01T14:37:42Z
+}
+
+message UserListResponse{
+    bool status = 1;
+    string message = 2;
+    repeated UserData data = 3;
+}
+
+message UpdateUserRequest {
+    int32 userID = 1;
+    string name= 2;
+}
+
+message DeleteUserRequest {
+    int32 userID = 1;
+}
