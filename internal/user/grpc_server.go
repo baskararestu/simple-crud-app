@@ -52,7 +52,7 @@ func (s *Server) CreateUser(ctx context.Context, req *user.CreateUserRequest) (*
 
 func (s *Server) GetUser(ctx context.Context, _ *emptypb.Empty) (*user.UserListResponse, error) {
 	token,_ := utilities.ExtractToken(ctx)
-	if token != "xxxx"{
+	if token != s.cfg.Token{
 		return nil, status.Error(codes.Unauthenticated, "invalid token")
 	}
 
@@ -79,7 +79,7 @@ func (s *Server) GetUser(ctx context.Context, _ *emptypb.Empty) (*user.UserListR
 
 func (s *Server) UpdateUser (ctx context.Context, req *user.UpdateUserRequest) (*user.CommonResponse, error) {
 	token,_ := utilities.ExtractToken(ctx)
-	if token != "xxxx"{
+	if token != s.cfg.Token{
 		return nil, status.Error(codes.Unauthenticated, "invalid token")
 	}
 
@@ -101,7 +101,7 @@ func (s *Server) UpdateUser (ctx context.Context, req *user.UpdateUserRequest) (
 
 func (s *Server) DeleteUser(ctx context.Context,req *user.DeleteUserRequest) (*user.CommonResponse, error) {
 	token,_ := utilities.ExtractToken(ctx)
-	if token != "xxxx"{
+	if token != s.cfg.Token{
 		return nil, status.Error(codes.Unauthenticated, "invalid token")
 	}
 

@@ -7,6 +7,7 @@ type Config struct {
 	ProxyHeader   string   `env:"PROXY_HEADER"`
 	Database      Database `envPrefix:"DB_"`
 	LogFields     []string `env:"LOG_FIELDS" envSeparator:","`
+	Token string `env:"TOKEN"`
 }
 
 type Database struct {

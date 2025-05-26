@@ -37,7 +37,7 @@ import (
 			Status: true,
 			Message: "Login successful",
 			Data: &auth.Token{
-				AccessToken: "xxxx",
+				AccessToken: s.cfg.Token,
 			},
 		}, nil
 	}

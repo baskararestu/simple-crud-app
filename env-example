@@ -1,0 +1,9 @@
+HOST = localhost
+PORT = 50053
+# Database configuration 
+IS_DEVELOPMENT = true
+DB_DRIVER = mysql
+DB_DSN=user:pass@tcp(localhost:3306)/db_simple_crud?charset=utf8mb4&parseTime=True&loc=Local
+REDIS_HOST=localhost
+REDIS_PORT=6379
+TOKEN=xxxyyyzzz
