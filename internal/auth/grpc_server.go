@@ -5,6 +5,7 @@ import (
 	"simple-crud/internal/config"
 	"simple-crud/internal/domain"
 	"simple-crud/pb/auth"
+	"time"
 
 	"golang.org/x/crypto/bcrypt"
 	"google.golang.org/grpc"
@@ -30,6 +31,15 @@ import (
 			return nil, err
 		}
 		if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(req.GetPassword())); err != nil {
+			return nil, err
+		}
+
+		timeLogin := time.Now()
+
+		err =s.userRepo.Update(user.ID, domain.User{
+			LastAccessLogin: timeLogin,
+		})
+		if err != nil {
 			return nil, err
 		}
 		
