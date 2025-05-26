@@ -6,6 +6,7 @@ import (
 	"simple-crud/internal/domain"
 	"simple-crud/internal/utilities"
 	"simple-crud/pb/user"
+	"time"
 
 	"golang.org/x/crypto/bcrypt"
 	"google.golang.org/grpc"
@@ -38,7 +39,7 @@ func (s *Server) CreateUser(ctx context.Context, req *user.CreateUserRequest) (*
 		Name:     req.GetName(),
 		Email:    req.GetEmail(),
 		Password: string(hashedPassword),
-		
+		LastAccessLogin: time.Now(),
 	}
 
 	if err := s.userRepo.Create(newUser); err != nil {
